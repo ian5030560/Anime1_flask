@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Anime1.me 動畫線上看 – 上百部動漫免費線上看！</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v4-shims.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://www.bootstrapsite.com/includes/css/text.css">
+    <link rel="stylesheet" href="https://www.bootstrapsite.com/includes/classes/.obj.css">
+
+    <style></style>
+    <style>
+        .heading-10-advanced, .heading-10-advanced:hover {
+            text-decoration: none;
+            color: black;
+            font-weight: 700;
+        }
+
+        .button-9-advanced {
+            background-color: #77cc6d;
+            color: white;
+        }
+
+
+        .button-17-advanced {
+            color: #77cc6d;
+        }
+
+
+        .row-6-advanced {
+            background-color: gray;
+        }
+
+
+        .button-15-advanced {
+            background-color: #7c470f;
+            color: white;
+        }
+
+
+        .button-16-advanced {
+            background-color: #642100;
+            color: white;
+        }
+
+
+        .row-7-advanced {
+            background-color: gray;
+        }
+
+
+        .row-8-advanced {
+            background-color: #3C3C3C;
+        }
+
+        .block{
+            padding-left: 105px;
+        }
+
+        thead{
+            background-color:rgb(141, 209, 252, 0.3);
+        }
+
+        th:hover{
+            background-color: #0693e3;
+        }
+    </style>
+
+
+</head>
+
+<body>
+
+    <div id="section-4">
+        <div class="container my-3">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container">
+                    <h1>
+                        <a href = "https://anime1.me/" class = "heading-10-advanced">
+                            Anime1.me動畫線上看
+                        </a>
+                    </h1>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">動畫列表</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">2023春季新番列表</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                href="https://anime1.me/notify/">訂閱更新通知</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                href="https://anime1.me/%e7%95%99%e8%a8%80%e6%9d%bf">留言板</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                href="https://anime1.me/%e9%97%9c%e6%96%bc">關於</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div id="section-7">
+        <div class="row">
+            <div class="col-8 container block">
+                <h3>動畫列表</h3>
+                <div>
+                    <p><span
+                            style="font-size: 15px; color: rgb(102, 102, 102); font-family: open sans, helvetica neue, Helvetica, Arial, sans-serif">本頁面預設以更新順序排序，最近更新的動畫會在最上面。</span>
+                    </p>
+                </div>
+                <form action="" method="post" class="d-flex justify-content-end">
+                    <div class="d-flex text-nowrap"><label for="input-3" class="form-label">搜尋:</label><input
+                            type="search" class="form-control form-control-sm mx-1" id="input-3" label="搜尋:"
+                            name="search1"></div>
+                </form>
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>動畫名稱</th>
+                            <th>集數</th>
+                            <th>年份</th>
+                            <th>季節</th>
+                            <th>字幕組</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for row in info1 %}
+                            <tr>
+                                <td>{{row[1]}}</td>
+                                <td>{{row[2]}}</td>
+                                <td>{{row[3]}}</td>
+                                <td>{{row[4]}}</td>
+                                <td>{{row[5]}}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="row">
+                    <div class="col-9">
+                        <div>
+                            <p>目前顯示第 {{start}} 至第 {{end}} 個資料列，總計 {{total}} 個資料列</p>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <nav aria-label="Page navigation" class="text-nowrap">
+                            <ul class="pagination">
+                                <li class="page-item"><a class="page-link">上一頁</a></li>
+                                <li class="page-item"><a class="page-link">下一頁</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-4">
+                <form action="" method="post" class="d-flex flex-column flex-md-row align-items-center">
+                    <div><input type="search" class="form-control form-control-sm" id="input-4" placeholder="搜尋...">
+                    </div><button class="btn button-9-advanced" type="submit">查詢</button>
+                </form>
+                <div>
+                    <h3 class="mb-4">近期更新</h3>
+                    <ul class="list-group">
+                        {% for row in info1 %}
+                            <li>row</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="section-8">
+        <div class="container-fluid">
+            <div class="row row-6-advanced">
+                <div class="col-12 text-center"><button class="btn button-17-advanced" type="button">往上</button></div>
+            </div>
+            <div class="row row-7-advanced">
+                <div class="col-12 text-center"><button class="btn me-1 button-15-advanced"
+                        type="button">黑暗模式</button><button class="btn button-16-advanced"
+                        type="button">自動切換黑暗/明亮模式</button></div>
+            </div>
+            <div class="row row-8-advanced pt-4">
+                <div class = "col text-center">
+                    <div>Anime1.me</div>
+                    <div>
+                        <span><a href = "https://twitter.com/Anime1Me">Twitter</a></span>
+                        <span>|</span>
+                        <span><a href = "https://t.me/anime1notify"> Telegram 更新通知</a></span>
+                    </div>
+                    <div>Basic Shop designed by 
+                        <a href = "http://www.iograficathemes.com/">Iografica Themes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+
+
+
+</body>
+
+</html>
