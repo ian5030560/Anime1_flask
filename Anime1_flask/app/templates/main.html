@@ -28,11 +28,6 @@
         }
 
 
-        .button-17-advanced {
-            color: #77cc6d;
-        }
-
-
         .row-6-advanced {
             background-color: gray;
         }
@@ -49,6 +44,13 @@
             color: white;
         }
 
+        .button-17-advanced{
+            color:#77cc6d;
+        }
+        
+        .button-17-advanced:hover{
+            color: white;
+        }
 
         .row-7-advanced {
             background-color: gray;
@@ -70,8 +72,63 @@
         th:hover{
             background-color: #0693e3;
         }
-    </style>
 
+        .item{
+           border: none; 
+        }
+
+        .content-text{
+            color: #888;
+        }
+
+        .content-link{
+            text-decoration: none;
+            color: #77cc6d;
+        }
+
+        .content-link:hover{
+            color: white;
+        }
+
+        .anime-link{
+            color: black;
+            text-decoration: none;
+        }
+
+        .anime-link:hover{
+            color: #77cc6d;
+        }
+
+        .table-strip > tr:nth-child(even){
+            background-color: #f2f2f2;
+        }
+
+        .gg-chevron-up {
+            color: #77cc6d;
+            box-sizing: border-box;
+            position: relative;
+            display: block;
+            transform: scale(var(--ggs,1));
+            width: 22px;
+            height: 22px;
+            border: 2px solid transparent;
+            border-radius: 100px
+        }
+           
+        .gg-chevron-up::after {
+            content: "";
+            display: block;
+            box-sizing: border-box;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-top: 2px solid;
+            border-right: 2px solid;
+            transform: rotate(-45deg);
+            left: 4px;
+            bottom: 2px;
+        } 
+    </style>
 
 </head>
 
@@ -114,7 +171,7 @@
                             type="search" class="form-control form-control-sm mx-1" id="input-3" label="搜尋:"
                             name="search1"></div>
                 </form>
-                <table class="table table-striped table-hover">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>動畫名稱</th>
@@ -124,10 +181,10 @@
                             <th>字幕組</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody class = "table-strip">
                         {% for row in info1 %}
                             <tr>
-                                <td>{{row[1]}}</td>
+                                <td><a href = {{make_link(row[0])}} class = "anime-link">{{row[1]}}</a></td>
                                 <td>{{row[2]}}</td>
                                 <td>{{row[3]}}</td>
                                 <td>{{row[4]}}</td>
@@ -157,11 +214,11 @@
                     <div><input type="search" class="form-control form-control-sm" id="input-4" placeholder="搜尋...">
                     </div><button class="btn button-9-advanced" type="submit">查詢</button>
                 </form>
-                <div>
-                    <h3 class="mb-4">近期更新</h3>
+                <div class = "pt-2">
+                    <h4 class="mb-4">近期更新</h4>
                     <ul class="list-group">
-                        {% for row in info1 %}
-                            <li>row</li>
+                        {% for row in info2 %}
+                            <li class="list-group-item item p-1"><a href = {{make_link(row[0])}} class="anime-link">{{make_row(row)}}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -171,7 +228,7 @@
     <div id="section-8">
         <div class="container-fluid">
             <div class="row row-6-advanced">
-                <div class="col-12 text-center"><button class="btn button-17-advanced" type="button">往上</button></div>
+                <div class="col-12 text-center"><button class = "btn button-17-advanced" type = "button">▲</button></div>
             </div>
             <div class="row row-7-advanced">
                 <div class="col-12 text-center"><button class="btn me-1 button-15-advanced"
@@ -180,14 +237,14 @@
             </div>
             <div class="row row-8-advanced pt-4">
                 <div class = "col text-center">
-                    <div>Anime1.me</div>
-                    <div>
-                        <span><a href = "https://twitter.com/Anime1Me">Twitter</a></span>
+                    <div class = "content-text">Anime1.me</div>
+                    <div class = "content-text">
+                        <span><a href = "https://twitter.com/Anime1Me"  class = "content-link">Twitter</a></span>
                         <span>|</span>
-                        <span><a href = "https://t.me/anime1notify"> Telegram 更新通知</a></span>
+                        <span><a href = "https://t.me/anime1notify"  class = "content-link"> Telegram 更新通知</a></span>
                     </div>
-                    <div>Basic Shop designed by 
-                        <a href = "http://www.iograficathemes.com/">Iografica Themes</a>
+                    <div class = "content-text">Basic Shop designed by 
+                        <a href = "http://www.iograficathemes.com/"  class = "content-link">Iografica Themes</a>
                     </div>
                 </div>
             </div>
@@ -196,8 +253,6 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
-
-
 
 </body>
 
