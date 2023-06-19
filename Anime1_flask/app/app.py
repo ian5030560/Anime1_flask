@@ -1,4 +1,4 @@
-from flask import Flask, redirect, render_template, url_for, request
+from flask import Flask, redirect, render_template, url_for
 from anime1.explorer import explore
 
 app = Flask(__name__)
@@ -17,15 +17,9 @@ def make_link(number: int):
 
 app.jinja_env.globals.update(make_row = make_row, make_link = make_link)
 
-@app.route("/", methods = ["GET", "POST"])
+@app.route("/")
 def main():
-    if request.method == "POST":
-        s2 = request.form.get("search2")
-        url = "http://anime1.me/?s={}".format(s2)
-
-        return redirect(url)
-    
-    return render_template("main.html", info1 = info["content"][: 20], info2 = info["content"][: 10], start = 1, end = 20, total = info["length"])
+    return render_template("main.html", info1 = info["content"][: 20], info2 = info["content"][: 10], start = 0, end = 20, total = info["length"])
 
 if __name__ == '__main__':
     app.run(debug=True)
