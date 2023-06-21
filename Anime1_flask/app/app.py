@@ -1,13 +1,16 @@
 from flask import Flask, redirect, render_template, url_for, request
 from anime1.explorer import explore
+import re
 
 app = Flask(__name__)
 info = explore()
 
 def make_row(arg: list):
     name = arg[1]
-    number = arg[2][3: len(arg[2]) - 1]
+    r1 = re.findall(r"連載中\(([0-9]+)\)", arg[2]) 
+    r2 = re.findall(r"([1-9]+)-([0-9]+)", arg[2])
     
+    number = r1[0] if r1 != [] else r2[0][1]
     result = "{}[{}]".format(name, number)
 
     return result

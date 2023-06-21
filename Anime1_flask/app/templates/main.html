@@ -63,7 +63,7 @@
         }
 
         .block{
-            padding-left: 6%;
+            padding-left: 5.5%;
         }
 
         thead{
@@ -129,6 +129,10 @@
             left: 4px;
             bottom: 2px;
         } 
+
+        .spec-col{
+            width: 40%;
+        }
     </style>
 
 </head>
@@ -145,14 +149,14 @@
                         </a>
                     </h1>
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">動畫列表</a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/">2023春季新番列表</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/"><span class="anime-link">動畫列表</span></a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/"><span class="anime-link">春季新番列表</span></a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                href="https://anime1.me/notify/">訂閱更新通知</a></li>
+                                href="https://anime1.me/notify/"><span class="anime-link">訂閱更新通知</span></a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                href="https://anime1.me/%e7%95%99%e8%a8%80%e6%9d%bf">留言板</a></li>
+                                href="https://anime1.me/%e7%95%99%e8%a8%80%e6%9d%bf"><span class="anime-link">留言板</span></a></li>
                         <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                href="https://anime1.me/%e9%97%9c%e6%96%bc">關於</a></li>
+                                href="https://anime1.me/%e9%97%9c%e6%96%bc"><span class="anime-link">關於</span></a></li>
                     </ul>
                 </div>
             </nav>
@@ -174,11 +178,11 @@
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th>動畫名稱</th>
-                            <th>集數</th>
-                            <th>年份</th>
-                            <th>季節</th>
-                            <th>字幕組</th>
+                            <th scope="col" class="spec-col">動畫名稱</th>
+                            <th scope="col">集數</th>
+                            <th scope="col">年份</th>
+                            <th scope="col">季節</th>
+                            <th scope="col">字幕組</th>
                         </tr>
                     </thead>
                     <tbody class = "table-strip">
