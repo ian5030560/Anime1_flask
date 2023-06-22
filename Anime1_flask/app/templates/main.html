@@ -104,34 +104,12 @@
             background-color: #f2f2f2;
         }
 
-        .gg-chevron-up {
-            color: #77cc6d;
-            box-sizing: border-box;
-            position: relative;
-            display: block;
-            transform: scale(var(--ggs,1));
-            width: 22px;
-            height: 22px;
-            border: 2px solid transparent;
-            border-radius: 100px
-        }
-           
-        .gg-chevron-up::after {
-            content: "";
-            display: block;
-            box-sizing: border-box;
-            position: absolute;
-            width: 10px;
-            height: 10px;
-            border-top: 2px solid;
-            border-right: 2px solid;
-            transform: rotate(-45deg);
-            left: 4px;
-            bottom: 2px;
-        } 
-
         .spec-col{
             width: 40%;
+        }
+
+        #page{
+            cursor: pointer;
         }
     </style>
 
@@ -185,29 +163,20 @@
                             <th scope="col">字幕組</th>
                         </tr>
                     </thead>
-                    <tbody class = "table-strip">
-                        {% for row in info1 %}
-                            <tr>
-                                <td><a href = {{make_link(row[0])}} class = "anime-link">{{row[1]}}</a></td>
-                                <td>{{row[2]}}</td>
-                                <td>{{row[3]}}</td>
-                                <td>{{row[4]}}</td>
-                                <td>{{row[5]}}</td>
-                            </tr>
-                        {% endfor %}
+                    <tbody class = "table-strip", id = "table">
                     </tbody>
                 </table>
                 <div class="row">
                     <div class="col-9">
                         <div>
-                            <p>目前顯示第 {{start}} 至第 {{end}} 個資料列，總計 {{total}} 個資料列</p>
+                            <p id = "number-text">目前顯示第 {{start}} 至第 {{end}} 個資料列，總計 {{total}} 個資料列</p>
                         </div>
                     </div>
                     <div class="col-3">
                         <nav aria-label="Page navigation" class="text-nowrap">
                             <ul class="pagination">
-                                <li class="page-item"><a class="page-link">上一頁</a></li>
-                                <li class="page-item"><a class="page-link">下一頁</a></li>
+                                <li class="page-item"><a class="page-link" id = "page" onclick="change('prev')">上一頁</a></li>
+                                <li class="page-item"><a class="page-link" id = "page" onclick="change('next')">下一頁</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -261,7 +230,100 @@
         function topFunction() {
             document.body.scrollTop = 0;
             document.documentElement.scrollTop = 0;
-          }
+        }
+
+        var start = {{start}};
+        var end = {{end}};
+        var data = JSON.parse({{info | tojson}});
+
+        function change(op){
+            function make_link(num){
+                return "http://anime1.me/?cat=" + num
+            }
+            function display(s, e){
+                let table = document.getElementById("table");
+                table.innerHTML = "";
+                let d = data.slice(s - 1, e);
+                d.forEach(function(row){
+                    let r = document.createElement("tr");
+
+                    let v1 = document.createElement("td");
+                    let link = document.createElement("a");
+                    link.href = make_link(row[0]);
+                    link.className = "anime-link";
+                    let v1t = document.createTextNode(row[1]);
+                    link.appendChild(v1t);
+                    v1.appendChild(link);
+                    r.appendChild(v1);
+                   
+                    let v2 = document.createElement("td");
+                    let v2t = document.createTextNode(row[2]);
+                    v2.appendChild(v2t);
+                    r.appendChild(v2);
+
+                    let v3 = document.createElement("td");
+                    let v3t = document.createTextNode(row[3]);
+                    v3.appendChild(v3t);
+                    r.appendChild(v3);
+
+                    let v4 = document.createElement("td");
+                    let v4t = document.createTextNode(row[4]);
+                    v4.appendChild(v4t);
+                    r.appendChild(v4);
+
+                    let v5 = document.createElement("td");
+                    let v5t = document.createTextNode(row[5]);
+                    v5.appendChild(v5t);
+                    r.appendChild(v5);
+                    
+                    table.innerHTML += r.outerHTML;
+                })
+
+                let text = document.getElementById("number-text");
+                text.innerHTML = "目前顯示第 " + start + " 至第 " + end + " 個資料列，總計 " + data.length + " 個資料列"
+            }
+
+            function count(op, t, k){
+                let j = 20;
+                while(j > 0){
+                    if(op == "sub"){
+                        if((k == "start" && t > 1) || (k == "end" && t > 20)){
+                            t -= 1;
+                        }
+                    }
+                    else if(op == "add"){
+                        if((k == "start" && t < data.length - 20) || (k == "end" && t < data.length)){
+                            t += 1;
+                        }
+                    }
+                
+                    j -= 1;
+                }
+                
+                return t;
+            }
+            function prev(){
+                start = count("sub", start, "start");
+                end = count("sub", end, "end");
+            }
+
+            function next(){
+                start = count("add", start, "start");
+                end = count("add", end, "end");
+            }
+
+            if(op == "prev"){
+                prev();
+            }
+            else if(op == "next"){
+                next();
+            }
+
+            display(start, end);
+        }
+
+        change("init");
+
     </script>
 </body>
 

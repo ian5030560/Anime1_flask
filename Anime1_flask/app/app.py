@@ -1,6 +1,7 @@
 from flask import Flask, redirect, render_template, url_for, request
 from anime1.explorer import explore
 import re
+import json
 
 app = Flask(__name__)
 info = explore()
@@ -28,7 +29,20 @@ def main():
 
         return redirect(url)
     
-    return render_template("main.html", info1 = info["content"][: 20], info2 = info["content"][: 10], start = 1, end = 20, total = info["length"])
+    return render_template("main.html", info2 = info["content"][: 10], start = 1, end = 20, total = info["length"], info = json.dumps(info["content"]))
+
+
+# @app.route("/prev/start=<s>,end=<e>")
+# def prev(s: int, e: int):
+#     s -= 20
+#     e -= 20
+#     return redirect()
+        
+    
+
+# app.route("/next")
+# def next():
+#     pass
 
 if __name__ == '__main__':
     app.run(debug=True)
