@@ -1,330 +1,181 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
+{% block title %}Anime1.me 動畫線上看 – 上百部動漫免費線上看！{% endblock title %}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <title>Anime1.me 動畫線上看 – 上百部動漫免費線上看！</title>
+{% block style %}
+    thead{
+        background-color:rgb(141, 209, 252, 0.3);
+    }
 
+    th:hover{
+        background-color: #0693e3;
+    }
+    
+    .table-strip > tr:nth-child(even){
+        background-color: #f2f2f2;
+    }
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v4-shims.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.css">
-    <link rel="stylesheet" href="https://www.bootstrapsite.com/includes/css/text.css">
-    <link rel="stylesheet" href="https://www.bootstrapsite.com/includes/classes/.obj.css">
-    <link rel = "icon" href = "{{url_for('static', filename='favicon-32x32.ico')}}"/>
-    <style></style>
-    <style>
+    .spec-col{
+        width: 40%;
+    }
 
-        .heading-10-advanced, .heading-10-advanced:hover {
-            text-decoration: none;
-            color: black;
-            font-weight: 700;
-        }
+    #page{
+        cursor: pointer;
+    }
+{% endblock style %}
 
-        .button-9-advanced {
-            background-color: #77cc6d;
-            color: white;
-        }
-
-
-        .row-6-advanced {
-            background-color: gray;
-        }
-
-
-        .button-15-advanced {
-            background-color: #7c470f;
-            color: white;
-        }
-
-
-        .button-16-advanced {
-            background-color: #642100;
-            color: white;
-        }
-
-        .button-17-advanced{
-            color:#77cc6d;
-        }
-        
-        .button-17-advanced:hover{
-            color: white;
-        }
-
-        .row-7-advanced {
-            background-color: gray;
-        }
-
-
-        .row-8-advanced {
-            background-color: #3C3C3C;
-        }
-
-        .block{
-            padding-left: 5.5%;
-        }
-
-        thead{
-            background-color:rgb(141, 209, 252, 0.3);
-        }
-
-        th:hover{
-            background-color: #0693e3;
-        }
-
-        .item{
-           border: none; 
-        }
-
-        .content-text{
-            color: #888;
-        }
-
-        .content-link{
-            text-decoration: none;
-            color: #77cc6d;
-        }
-
-        .content-link:hover{
-            color: white;
-        }
-
-        .anime-link{
-            color: black;
-            text-decoration: none;
-        }
-
-        .anime-link:hover{
-            color: #77cc6d;
-        }
-
-        .table-strip > tr:nth-child(even){
-            background-color: #f2f2f2;
-        }
-
-        .spec-col{
-            width: 40%;
-        }
-
-        #page{
-            cursor: pointer;
-        }
-    </style>
-
-</head>
-
-<body>
-
-    <div id="section-4">
-        <div class="container-fluid my-3">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid px-5">
-                    <h1>
-                        <a href = "https://anime1.me/" class = "heading-10-advanced">
-                            Anime1.me動畫線上看
-                        </a>
-                    </h1>
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/"><span class="anime-link">動畫列表</span></a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/"><span class="anime-link">春季新番列表</span></a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                href="https://anime1.me/notify/"><span class="anime-link">訂閱更新通知</span></a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                href="https://anime1.me/%e7%95%99%e8%a8%80%e6%9d%bf"><span class="anime-link">留言板</span></a></li>
-                        <li class="nav-item"><a class="nav-link active" aria-current="page"
-                                href="https://anime1.me/%e9%97%9c%e6%96%bc"><span class="anime-link">關於</span></a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </div>
-    <div id="section-7">
-        <div class="row">
-            <div class="col-8 container block">
-                <h3>動畫列表</h3>
-                <div>
-                    <p><span
-                            style="font-size: 15px; color: rgb(102, 102, 102); font-family: open sans, helvetica neue, Helvetica, Arial, sans-serif">本頁面預設以更新順序排序，最近更新的動畫會在最上面。</span>
-                    </p>
-                </div>
-                <div class="d-flex justify-content-end">
-                    <div class="d-flex text-nowrap"><label for="input-3" class="form-label">搜尋:</label><input
-                            type="search" class="form-control form-control-sm mx-1" id="input-3" label="搜尋:"></div>
-                    </div>
-                <table class="table table-hover">
-                    <thead>
-                        <tr>
-                            <th scope="col" class="spec-col">動畫名稱</th>
-                            <th scope="col">集數</th>
-                            <th scope="col">年份</th>
-                            <th scope="col">季節</th>
-                            <th scope="col">字幕組</th>
-                        </tr>
-                    </thead>
-                    <tbody class = "table-strip", id = "table">
-                    </tbody>
-                </table>
-                <div class="row">
-                    <div class="col-9">
-                        <div>
-                            <p id = "number-text">目前顯示第 {{start}} 至第 {{end}} 個資料列，總計 {{total}} 個資料列</p>
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <nav aria-label="Page navigation" class="text-nowrap">
-                            <ul class="pagination">
-                                <li class="page-item"><a class="page-link" id = "page" onclick="change('prev')">上一頁</a></li>
-                                <li class="page-item"><a class="page-link" id = "page" onclick="change('next')">下一頁</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
+{% block content %}
+<div id="section-7">
+    <div class="row">
+        <div class="col-8 container block">
+            <h3>動畫列表</h3>
+            <div>
+                <p><span
+                        style="font-size: 15px; color: rgb(102, 102, 102); font-family: open sans, helvetica neue, Helvetica, Arial, sans-serif">本頁面預設以更新順序排序，最近更新的動畫會在最上面。</span>
+                </p>
             </div>
-            <div class="col-4">
-                <form action="" method="post" class="d-flex flex-column flex-md-row align-items-center">
-                    <div><input type="search" class="form-control form-control-sm" id="input-4" placeholder="搜尋..." name = "search2">
-                    </div><button class="btn button-9-advanced" type="submit">查詢</button>
-                </form>
-                <div class = "pt-2">
-                    <h4 class="mb-4">近期更新</h4>
-                    <ul class="list-group">
-                        {% for row in info2 %}
-                            <li class="list-group-item item p-1"><a href = {{make_link(row[0])}} class="anime-link">{{make_row(row)}}</a></li>
-                        {% endfor %}
-                    </ul>
+            <div class="d-flex justify-content-end">
+                <div class="d-flex text-nowrap"><label for="input-3" class="form-label">搜尋:</label><input
+                        type="search" class="form-control form-control-sm mx-1" id="input-3" label="搜尋:"></div>
+                </div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col" class="spec-col">動畫名稱</th>
+                        <th scope="col">集數</th>
+                        <th scope="col">年份</th>
+                        <th scope="col">季節</th>
+                        <th scope="col">字幕組</th>
+                    </tr>
+                </thead>
+                <tbody class = "table-strip", id = "table">
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-9">
+                    <div>
+                        <p id = "number-text">目前顯示第 {{start}} 至第 {{end}} 個資料列，總計 {{total}} 個資料列</p>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <nav aria-label="Page navigation" class="text-nowrap">
+                        <ul class="pagination">
+                            <li class="page-item"><a class="page-link" id = "page" onclick="change('prev')">上一頁</a></li>
+                            <li class="page-item"><a class="page-link" id = "page" onclick="change('next')">下一頁</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
-    </div>
-    <div id="section-8">
-        <div class="container-fluid">
-            <div class="row row-6-advanced">
-                <div class="col-12 text-center"><button class = "btn button-17-advanced" type = "button" onclick = "topFunction()">▲</button></div>
-            </div>
-            <div class="row row-7-advanced">
-                <div class="col-12 text-center"><button class="btn me-1 button-15-advanced"
-                        type="button">黑暗模式</button><button class="btn button-16-advanced"
-                        type="button">自動切換黑暗/明亮模式</button></div>
-            </div>
-            <div class="row row-8-advanced pt-4">
-                <div class = "col text-center">
-                    <div class = "content-text">Anime1.me</div>
-                    <div class = "content-text">
-                        <span><a href = "https://twitter.com/Anime1Me"  class = "content-link">Twitter</a></span>
-                        <span>|</span>
-                        <span><a href = "https://t.me/anime1notify"  class = "content-link"> Telegram 更新通知</a></span>
-                    </div>
-                    <div class = "content-text">Basic Shop designed by 
-                        <a href = "http://www.iograficathemes.com/"  class = "content-link">Iografica Themes</a>
-                    </div>
-                </div>
+        <div class="col-4">
+            <form action="" method="post" class="d-flex flex-column flex-md-row align-items-center">
+                <div><input type="search" class="form-control form-control-sm" id="input-4" placeholder="搜尋..." name = "search2">
+                </div><button class="btn button-9-advanced" type="submit">查詢</button>
+            </form>
+            <div class = "pt-2">
+                <h4 class="mb-4">近期更新</h4>
+                <ul class="list-group">
+                    {% for row in info1 %}
+                        <li class="list-group-item item p-1"><a href = {{make_link(row[0])}} class="anime-link">{{make_row(row)}}</a></li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
+</div>
+{% endblock content %}
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+{% block script %}
+    var start = {{start}};
+    var end = {{end}};
+    var data = JSON.parse({{info | tojson}});
+
+    function change(op){
+        function make_link(num){
+            return "http://anime1.me/?cat=" + num
         }
+        function display(s, e){
+            let table = document.getElementById("table");
+            table.innerHTML = "";
+            let d = data.slice(s - 1, e);
+            d.forEach(function(row){
+                let r = document.createElement("tr");
 
-        var start = {{start}};
-        var end = {{end}};
-        var data = JSON.parse({{info | tojson}});
-
-        function change(op){
-            function make_link(num){
-                return "http://anime1.me/?cat=" + num
-            }
-            function display(s, e){
-                let table = document.getElementById("table");
-                table.innerHTML = "";
-                let d = data.slice(s - 1, e);
-                d.forEach(function(row){
-                    let r = document.createElement("tr");
-
-                    let v1 = document.createElement("td");
-                    let link = document.createElement("a");
-                    link.href = make_link(row[0]);
-                    link.className = "anime-link";
-                    let v1t = document.createTextNode(row[1]);
-                    link.appendChild(v1t);
-                    v1.appendChild(link);
-                    r.appendChild(v1);
-                   
-                    let v2 = document.createElement("td");
-                    let v2t = document.createTextNode(row[2]);
-                    v2.appendChild(v2t);
-                    r.appendChild(v2);
-
-                    let v3 = document.createElement("td");
-                    let v3t = document.createTextNode(row[3]);
-                    v3.appendChild(v3t);
-                    r.appendChild(v3);
-
-                    let v4 = document.createElement("td");
-                    let v4t = document.createTextNode(row[4]);
-                    v4.appendChild(v4t);
-                    r.appendChild(v4);
-
-                    let v5 = document.createElement("td");
-                    let v5t = document.createTextNode(row[5]);
-                    v5.appendChild(v5t);
-                    r.appendChild(v5);
-                    
-                    table.innerHTML += r.outerHTML;
-                })
-
-                let text = document.getElementById("number-text");
-                text.innerHTML = "目前顯示第 " + start + " 至第 " + end + " 個資料列，總計 " + data.length + " 個資料列"
-            }
-
-            function count(op, t, k){
-                let j = 20;
-                while(j > 0){
-                    if(op == "sub"){
-                        if((k == "start" && t > 1) || (k == "end" && t > 20)){
-                            t -= 1;
-                        }
-                    }
-                    else if(op == "add"){
-                        if((k == "start" && t < data.length - 20) || (k == "end" && t < data.length)){
-                            t += 1;
-                        }
-                    }
+                let v1 = document.createElement("td");
+                let link = document.createElement("a");
+                link.href = make_link(row[0]);
+                link.className = "anime-link";
+                let v1t = document.createTextNode(row[1]);
+                link.appendChild(v1t);
+                v1.appendChild(link);
+                r.appendChild(v1);
                 
-                    j -= 1;
+                let v2 = document.createElement("td");
+                let v2t = document.createTextNode(row[2]);
+                v2.appendChild(v2t);
+                r.appendChild(v2);
+
+                let v3 = document.createElement("td");
+                let v3t = document.createTextNode(row[3]);
+                v3.appendChild(v3t);
+                r.appendChild(v3);
+
+                let v4 = document.createElement("td");
+                let v4t = document.createTextNode(row[4]);
+                v4.appendChild(v4t);
+                r.appendChild(v4);
+
+                let v5 = document.createElement("td");
+                let v5t = document.createTextNode(row[5]);
+                v5.appendChild(v5t);
+                r.appendChild(v5);
+                
+                table.innerHTML += r.outerHTML;
+            })
+
+            let text = document.getElementById("number-text");
+            text.innerHTML = "目前顯示第 " + start + " 至第 " + end + " 個資料列，總計 " + data.length + " 個資料列"
+        }
+
+        function count(op, t, k){
+            let j = 20;
+            while(j > 0){
+                if(op == "sub"){
+                    if((k == "start" && t > 1) || (k == "end" && t > 20)){
+                        t -= 1;
+                    }
                 }
-                
-                return t;
+                else if(op == "add"){
+                    if((k == "start" && t < data.length - 20) || (k == "end" && t < data.length)){
+                        t += 1;
+                    }
+                }
+            
+                j -= 1;
             }
-            function prev(){
-                start = count("sub", start, "start");
-                end = count("sub", end, "end");
-            }
-
-            function next(){
-                start = count("add", start, "start");
-                end = count("add", end, "end");
-            }
-
-            if(op == "prev"){
-                prev();
-            }
-            else if(op == "next"){
-                next();
-            }
-
-            display(start, end);
+            
+            return t;
+        }
+        function prev(){
+            start = count("sub", start, "start");
+            end = count("sub", end, "end");
         }
 
-        change("init");
+        function next(){
+            start = count("add", start, "start");
+            end = count("add", end, "end");
+        }
 
-    </script>
-</body>
+        if(op == "prev"){
+            prev();
+        }
+        else if(op == "next"){
+            next();
+        }
 
-</html>
+        display(start, end);
+    }
+
+    change("init");
+{% endblock script %}
+
+

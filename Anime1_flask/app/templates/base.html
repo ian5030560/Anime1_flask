@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/v4-shims.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://www.bootstrapsite.com/includes/css/text.css">
+    <link rel="stylesheet" href="https://www.bootstrapsite.com/includes/classes/.obj.css">
+    <link rel = "icon" href = "{{url_for('static', filename='favicon-32x32.ico')}}"/>
+    <style>
+        .heading-10-advanced, .heading-10-advanced:hover {
+            text-decoration: none;
+            color: black;
+            font-weight: 700;
+        }
+    
+        .button-9-advanced {
+            background-color: #77cc6d;
+            color: white;
+        }
+    
+    
+        .row-6-advanced {
+            background-color: gray;
+        }
+    
+    
+        .button-15-advanced {
+            background-color: #7c470f;
+            color: white;
+        }
+    
+    
+        .button-16-advanced {
+            background-color: #642100;
+            color: white;
+        }
+    
+        .button-17-advanced{
+            color:#77cc6d;
+        }
+    
+        .button-17-advanced:hover{
+            color: white;
+        }
+    
+        .row-7-advanced {
+            background-color: gray;
+        }
+    
+    
+        .row-8-advanced {
+            background-color: #3C3C3C;
+        }
+    
+        .block{
+            padding-left: 5.5%;
+        }
+    
+        .item{
+        border: none; 
+        }
+    
+        .content-text{
+            color: #888;
+        }
+    
+        .content-link{
+            text-decoration: none;
+            color: #77cc6d;
+        }
+    
+        .content-link:hover{
+            color: white;
+        }
+    
+        .anime-link{
+            color: black;
+            text-decoration: none;
+        }
+    
+        .anime-link:hover{
+            color: #77cc6d;
+        }
+    </style>
+    <style>{% block style %}{% endblock style %}</style>
+
+</head>
+
+<body>
+
+    <div id="section-4">
+        <div class="container-fluid my-3">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid px-5">
+                    <h1>
+                        <a href = "/" class = "heading-10-advanced">
+                            Anime1.me動畫線上看
+                        </a>
+                    </h1>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="/"><span class="anime-link">動畫列表</span></a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="{{url_for('season', season=season)}}"><span class="anime-link">{{season}}</span></a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                href="https://anime1.me/notify/"><span class="anime-link">訂閱更新通知</span></a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                href="https://anime1.me/%e7%95%99%e8%a8%80%e6%9d%bf"><span class="anime-link">留言板</span></a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page"
+                                href="https://anime1.me/%e9%97%9c%e6%96%bc"><span class="anime-link">關於</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    {% block content %}{% endblock content %}
+
+    <div id="section-8">
+        <div class="container-fluid">
+            <div class="row row-6-advanced">
+                <div class="col-12 text-center"><button class = "btn button-17-advanced" type = "button" onclick = "topFunction()">▲</button></div>
+            </div>
+            <div class="row row-7-advanced">
+                <div class="col-12 text-center"><button class="btn me-1 button-15-advanced"
+                        type="button">黑暗模式</button><button class="btn button-16-advanced"
+                        type="button">自動切換黑暗/明亮模式</button></div>
+            </div>
+            <div class="row row-8-advanced pt-4">
+                <div class = "col text-center">
+                    <div class = "content-text">Anime1.me</div>
+                    <div class = "content-text">
+                        <span><a href = "https://twitter.com/Anime1Me"  class = "content-link">Twitter</a></span>
+                        <span>|</span>
+                        <span><a href = "https://t.me/anime1notify"  class = "content-link"> Telegram 更新通知</a></span>
+                    </div>
+                    <div class = "content-text">Basic Shop designed by 
+                        <a href = "http://www.iograficathemes.com/"  class = "content-link">Iografica Themes</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+
+        {% block script %}{% endblock script %}
+    </script>
+</body>
+
+</html>

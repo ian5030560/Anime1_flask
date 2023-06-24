@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %}{{title}}{% endblock title %}
+{% block content %}
+<div id="section-1" class="container">
+    <div class="row">
+      <div class="col-12">
+        <h2>{{title}}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <h6 class="text-center mb-0 p-3 heading-3-advanced">{{month}}</h6>
+        <table class="table table-striped my-0 table-1-advanced">
+          <thead>
+            <tr>
+              <th>日</th>
+              <th>一</th>
+              <th>二</th>
+              <th>三</th>
+              <th>四</th>
+              <th>五</th>
+              <th>六</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <h6 class="text-center p-2 heading-4-advanced">Anime1.me</h6>
+      </div>
+    </div>
+    <div class="my-2">
+      <div><a href="#" class="link-6-advanced">&gt;&gt; 2023年冬季新番(1-3月)</a></div>
+      <div><a href="#">&gt;&gt; 2023年夏季新番(7-9月)</a></div>
+    </div>
+  </div>
+{% endblock content %}
+
+{% block style %}
+.heading-3-advanced {
+    border: solid 1px gray;
+    border-bottom: none;
+    color: gray;
+    font-weight: bold;
+  }
+
+
+  .table-1-advanced {
+    border: solid 1px gray;
+  }
+
+
+  .heading-4-advanced {
+    border: 1px solid gray;
+    border-top: none;
+  }
+
+
+  .link-6-advanced {
+    color: black;
+    text-decoration: none;
+  }
+{% endblock style %}

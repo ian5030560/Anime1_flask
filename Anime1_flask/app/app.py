@@ -1,10 +1,13 @@
 from flask import Flask, redirect, render_template, url_for, request
-from anime1.explorer import explore
+from anime1.explorer import get_menu, get_anime_list
 import re
 import json
 
 app = Flask(__name__)
-info = explore()
+info = get_menu()
+list_name = get_anime_list()
+main_menu = list_name["main_menu"]
+sub_menu = list_name["sub_menu"]
 
 def make_row(arg: list):
     name = arg[1]
@@ -29,20 +32,15 @@ def main():
 
         return redirect(url)
     
-    return render_template("main.html", info2 = info["content"][: 10], start = 1, end = 20, total = info["length"], info = json.dumps(info["content"]))
+    return render_template("main.html", info1 = info["content"][: 10], 
+                           start = 1, end = 20, total = info["length"], 
+                           info = json.dumps(info["content"]),
+                            season = main_menu)
 
+@app.route("/<season>")
+def season(season: str):
+    return render_template("schedule.html", title = main_menu, season = main_menu, month = sub_menu)
 
-# @app.route("/prev/start=<s>,end=<e>")
-# def prev(s: int, e: int):
-#     s -= 20
-#     e -= 20
-#     return redirect()
-        
-    
-
-# app.route("/next")
-# def next():
-#     pass
 
 if __name__ == '__main__':
     app.run(debug=True)
