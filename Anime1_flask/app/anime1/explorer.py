@@ -28,7 +28,6 @@ def get_anime_list():
     sub_content = BeautifulSoup(sub_reponse.text, "html.parser")
     prev_block = sub_content.find("div", class_ = "entry-content")
     prev = prev_block.find("p")
-    print(prev.text)
         
     return {
         "main_menu": menu_name,
